@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+    show-sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  cache:
+    type: none # Disable caching for tests
+
+auth:
+  admin:
+    username: admin
+    password: adminPass # Simpler password for tests
+
+jwt:
+  secret: pK8nX#mY2$vL9qR5tF3*hJ7bN4wA6cE1gU8sZ0pD # Using same key for consistency
+  expiration: 3600000 # 1 hour
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.translation: DEBUG
